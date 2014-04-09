@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-abr-2014 18:20:30 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.model.entities.Endereco" table="endereco" catalog="semeru_jsf_maven_db">
+        <id name="idEndereco" type="java.lang.Integer">
+            <column name="IdEndereco" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tipologradouro" class="br.com.model.entities.Tipologradouro" fetch="select">
+            <column name="IdTipoLogradouro" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estado" class="br.com.model.entities.Estado" fetch="select">
+            <column name="IdEstado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pessoa" class="br.com.model.entities.Pessoa" fetch="select">
+            <column name="IdPessoa" />
+        </many-to-one>
+        <many-to-one name="tipoendereco" class="br.com.model.entities.Tipoendereco" fetch="select">
+            <column name="IdTipoEndereco" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cidade" class="br.com.model.entities.Cidade" fetch="select">
+            <column name="IdCidade" not-null="true" />
+        </many-to-one>
+        <property name="bairro" type="string">
+            <column name="Bairro" length="80" />
+        </property>
+        <property name="cep" type="string">
+            <column name="CEP" length="9" />
+        </property>
+        <property name="complemento" type="java.lang.Integer">
+            <column name="Complemento" />
+        </property>
+        <property name="nomeLogradouro" type="string">
+            <column name="NomeLogradouro" length="80" />
+        </property>
+        <property name="numero" type="java.lang.Integer">
+            <column name="Numero" />
+        </property>
+    </class>
+</hibernate-mapping>

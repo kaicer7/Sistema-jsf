@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-abr-2014 18:20:30 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.model.entities.Tipoendereco" table="tipoendereco" catalog="semeru_jsf_maven_db">
+        <id name="idTipoEndereco" type="java.lang.Integer">
+            <column name="IdTipoEndereco" />
+            <generator class="identity" />
+        </id>
+        <property name="descricaoTipoEndereco" type="string">
+            <column name="DescricaoTipoEndereco" length="35" not-null="true" />
+        </property>
+        <set name="enderecos" table="endereco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdTipoEndereco" not-null="true" />
+            </key>
+            <one-to-many class="br.com.model.entities.Endereco" />
+        </set>
+    </class>
+</hibernate-mapping>

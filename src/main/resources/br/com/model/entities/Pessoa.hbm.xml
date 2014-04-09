@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08-abr-2014 18:20:30 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.model.entities.Pessoa" table="pessoa" catalog="semeru_jsf_maven_db">
+        <id name="idPessoa" type="java.lang.Integer">
+            <column name="IdPessoa" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sexo" class="br.com.model.entities.Sexo" fetch="select">
+            <column name="IdSexo" not-null="true" />
+        </many-to-one>
+        <property name="cpf" type="string">
+            <column name="CPF" length="14" not-null="true" />
+        </property>
+        <property name="dataDeCadastro" type="date">
+            <column name="DataDeCadastro" length="10" not-null="true" />
+        </property>
+        <property name="dataDeNascimento" type="date">
+            <column name="DataDeNascimento" length="10" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="80" not-null="true" />
+        </property>
+        <property name="login" type="string">
+            <column name="Login" length="25" unique="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="Name" length="80" not-null="true" />
+        </property>
+        <property name="permissao" type="string">
+            <column name="Permissao" length="36" />
+        </property>
+        <property name="senha" type="string">
+            <column name="Senha" length="40" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="Telefone" length="15" not-null="true" />
+        </property>
+        <set name="enderecos" table="endereco" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IdPessoa" />
+            </key>
+            <one-to-many class="br.com.model.entities.Endereco" />
+        </set>
+    </class>
+</hibernate-mapping>
